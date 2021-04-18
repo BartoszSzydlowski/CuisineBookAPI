@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\BARTEK\\Desktop\\pz2\\CuisineBook\\Domain\\Domain.csproj": {}
+    "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\BARTEK\\Desktop\\pz2\\CuisineBook\\Domain\\Domain.csproj": {
+    "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\BARTEK\\Desktop\\pz2\\CuisineBook\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\BARTEK\\Desktop\\pz2\\CuisineBook\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\BARTEK\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\BARTEK\\Desktop\\pz2\\CuisineBook\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -46,6 +46,16 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -61,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
