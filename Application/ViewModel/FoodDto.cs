@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Application.Mapping;
+using AutoMapper;
 using Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.ViewModel
 {
-	public class FoodDto
+	public class FoodDto : IMap
 	{
 		public int Id { get; set; }
 		public DateTime CreationDate { get; set; }
