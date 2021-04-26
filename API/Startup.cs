@@ -1,7 +1,7 @@
+using API.Middleware;
 using Application;
 using Application.Services;
 using Infrastructure;
-using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,7 +11,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using OData.Swagger.Services;
 using System.Text;
 
 namespace API
@@ -36,7 +35,7 @@ namespace API
 
 			services.AddTransient<UserResolverService>();
 
-			services.AddOData();
+			services.AddScoped<ErrorHandlingMiddleware>();
 
 			services.AddDbContext<Context>(options =>
 				options.UseSqlServer(Configuration.GetConnectionString("CuisineBookAPI")));
@@ -83,7 +82,6 @@ namespace API
 				});
 			});
 
-			services.AddOdataSwaggerSupport();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -95,6 +93,8 @@ namespace API
 				app.UseSwagger();
 				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
 			}
+
+			app.UseMiddleware<ErrorHandlingMiddleware>();
 
 			app.UseHttpsRedirection();
 
