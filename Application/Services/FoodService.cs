@@ -1,6 +1,8 @@
 ﻿using Application.Interfaces;
 using Application.ViewModel.FoodVm;
+using AutoMapper;
 using Domain.Models;
+using Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,44 +11,79 @@ namespace Application.Services
 {
 	public class FoodService : IFoodService
 	{
-		public Task<IEnumerable<FoodDto>> GetAllFoodAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy)
+		private readonly IFoodRepository _foodRepository;
+		private readonly IMapper _mapper;
+
+		public FoodService(IFoodRepository foodRepository, IMapper mapper)
 		{
-			throw new NotImplementedException();
+			_foodRepository = foodRepository;
+			_mapper = mapper;
 		}
 
-		public Task<IEnumerable<FoodDto>> GetAllFoodAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted)
+		public async Task<IEnumerable<FoodDto>> GetAllFoodAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy)
 		{
-			throw new NotImplementedException();
+			var food = await _foodRepository.GetAllAsync(pageNumber, pageSize, sortField, ascending, filterBy);
+			return _mapper.Map<IEnumerable<FoodDto>>(food);
 		}
 
-		public Task<int> GetAllFoodCountAsync(string filterBy)
+		public async Task<IEnumerable<FoodDto>> GetAllFoodWithStatusAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted)
 		{
-			throw new NotImplementedException();
+			var food = await _foodRepository.GetAllWithStatusAsync(pageNumber, pageSize, sortField, ascending, filterBy, isAccepted);
+			return _mapper.Map<IEnumerable<FoodDto>>(food);
 		}
 
-		public Task<Food> GetFoodByIdAsync(int id)
+		public async Task<int> GetAllFoodCountAsync(string filterBy)
 		{
-			throw new NotImplementedException();
+			return await _foodRepository.GetAllCountAsync(filterBy);
 		}
 
-		public Task<Food> AddNewFoodAsync(CreateFoodDto newFood, string userId)
+		public async Task<FoodDto> GetFoodByIdAsync(int id)
 		{
-			throw new NotImplementedException();
+			var food = await _foodRepository.GetByIdAsync(id);
+			return _mapper.Map<FoodDto>(food);
 		}
 
-		public Task UpdateFoodAsync(UpdateFoodDto updateFood)
+		public async Task<FoodDto> AddNewFoodAsync(CreateFoodDto newFood, string userId)
 		{
-			throw new NotImplementedException();
+			if (string.IsNullOrEmpty(newFood.Title))
+			{
+				throw new Exception("Title can't have an empty title");
+			}
+
+			var food = _mapper.Map<Food>(newFood);
+			//food.UserId = userId;
+			var result = await _foodRepository.AddAsync(food);
+			return _mapper.Map<FoodDto>(result);
 		}
 
-		public Task DeleteFoodAsync(int id)
+		public async Task UpdateFoodAsync(UpdateFoodDto updateFood)
 		{
-			throw new NotImplementedException();
+			var existingFood = await _foodRepository.GetByIdAsync(updateFood.Id);
+			var food = _mapper.Map(updateFood, existingFood);
+			await _foodRepository.UpdateAsync(food);
 		}
 
-		public Task<bool> UserOwnsFoodAsync(int foodId, string userId)
+		public async Task DeleteFoodAsync(int id)
 		{
-			throw new NotImplementedException();
+			var food = await _foodRepository.GetByIdAsync(id);
+			await _foodRepository.DeleteAsync(food);
 		}
+
+		//public async Task<bool> UserOwnsFoodAsync(int foodId, string userId)
+		//{
+		//	var food = await _foodRepository.GetByIdAsync(foodId);
+
+		//	if (food == null)
+		//	{
+		//		return false;
+		//	}
+
+		//	if (food.UserId != userId)
+		//	{
+		//		return false;
+		//	}
+
+		//	return true;
+		//}
 	}
 }

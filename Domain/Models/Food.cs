@@ -33,8 +33,8 @@ namespace Domain.Models
 		[Required]
 		public string Cathegory { get; set; }
 
-		[Required]
-		[MaxLength(450)]
-		public string UserId { get; set; }
+		//[Required]
+		//[MaxLength(450)]
+		//public string UserId { get; set; }
 	}
 }

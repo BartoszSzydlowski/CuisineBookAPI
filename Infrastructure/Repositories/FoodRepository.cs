@@ -1,46 +1,74 @@
 ﻿using Domain.Models;
 using Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-	internal class FoodRepository : IFoodRepository
+	public class FoodRepository : IFoodRepository
 	{
-		public Task<IEnumerable<Food>> GetAllAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy)
+		private readonly Context _context;
+
+		public FoodRepository(Context context)
 		{
-			throw new NotImplementedException();
+			_context = context;
 		}
 
-		public Task<IEnumerable<Food>> GetAllAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted)
+		public async Task<IEnumerable<Food>> GetAllAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy)
 		{
-			throw new NotImplementedException();
+			return await _context.Food
+				   //.Where(m => m.Title.ToLower().Contains(filterBy.ToLower()) || m.Content.ToLower().Contains(filterBy.ToLower()))
+				   .Where(m => m.Title.ToLower().Contains(filterBy.ToLower()))
+				   .OrderByPropertyName(sortField, ascending)
+				   .Skip((pageNumber - 1) * pageSize)
+				   .Take(pageSize)
+				   .ToListAsync();
 		}
 
-		public Task<int> GetAllCountAsync(string filterBy)
+		public async Task<IEnumerable<Food>> GetAllWithStatusAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted)
 		{
-			throw new NotImplementedException();
+			return await _context.Food
+				   .Where(m => m.Title.ToLower().Contains(filterBy.ToLower()) && m.IsAccepted == isAccepted)
+				   .OrderByPropertyName(sortField, ascending)
+				   .Skip((pageNumber - 1) * pageSize)
+				   .Take(pageSize)
+				   .ToListAsync();
 		}
 
-		public Task<Food> GetByIdAsync(int id)
+		public async Task<int> GetAllCountAsync(string filterBy)
 		{
-			throw new NotImplementedException();
+			return await _context.Food
+				.Where(m => m.Title.ToLower().Contains(filterBy.ToLower()))
+				.CountAsync();
 		}
 
-		public Task<Food> AddAsync(Food food)
+		public async Task<Food> GetByIdAsync(int id)
 		{
-			throw new NotImplementedException();
+			return await _context.Food.SingleOrDefaultAsync(x => x.Id == id);
 		}
 
-		public Task UpdateAsync(Food food)
+		public async Task<Food> AddAsync(Food food)
 		{
-			throw new NotImplementedException();
+			var createdFood = await _context.Food.AddAsync(food);
+			await _context.SaveChangesAsync();
+			return createdFood.Entity;
 		}
 
-		public Task DeleteAsync(Food food)
+		public async Task UpdateAsync(Food food)
 		{
-			throw new NotImplementedException();
+			_context.Food.Update(food);
+			await _context.SaveChangesAsync();
+			await Task.CompletedTask;
+		}
+
+		public async Task DeleteAsync(Food food)
+		{
+			_context.Food.Remove(food);
+			await _context.SaveChangesAsync();
+			await Task.CompletedTask;
 		}
 	}
 }

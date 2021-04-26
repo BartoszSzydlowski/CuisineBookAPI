@@ -8,7 +8,7 @@ namespace Domain.Repositories
 	{
 		Task<IEnumerable<Food>> GetAllAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy);
 
-		Task<IEnumerable<Food>> GetAllAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted);
+		Task<IEnumerable<Food>> GetAllWithStatusAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted);
 
 		Task<int> GetAllCountAsync(string filterBy);
 

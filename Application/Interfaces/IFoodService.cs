@@ -9,18 +9,18 @@ namespace Application.Interfaces
 	{
 		Task<IEnumerable<FoodDto>> GetAllFoodAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy);
 
-		Task<IEnumerable<FoodDto>> GetAllFoodAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted);
+		Task<IEnumerable<FoodDto>> GetAllFoodWithStatusAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted);
 
 		Task<int> GetAllFoodCountAsync(string filterBy);
 
-		Task<Food> GetFoodByIdAsync(int id);
+		Task<FoodDto> GetFoodByIdAsync(int id);
 
-		Task<Food> AddNewFoodAsync(CreateFoodDto newFood, string userId);
+		Task<FoodDto> AddNewFoodAsync(CreateFoodDto newFood, string userId);
 
 		Task UpdateFoodAsync(UpdateFoodDto updateFood);
 
 		Task DeleteFoodAsync(int id);
 
-		Task<bool> UserOwnsFoodAsync(int foodId, string userId);
+		//Task<bool> UserOwnsFoodAsync(int foodId, string userId);
 	}
 }

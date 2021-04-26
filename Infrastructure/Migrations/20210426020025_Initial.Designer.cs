@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210422000926_Initial")]
+    [Migration("20210426020025_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,43 +28,49 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CalorificValue")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CalorificValue")
+                        .HasColumnType("int");
 
                     b.Property<string>("Cathegory")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Created")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreationDate")
+                    b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Difficulty")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageLink")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ingredients")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsAccepted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("ModificationDate")
+                    b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PreparationTime")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PreparingMethod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
