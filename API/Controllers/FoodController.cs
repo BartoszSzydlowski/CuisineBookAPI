@@ -31,7 +31,7 @@ namespace API.Controllers
 			return Ok(SortingHelper.GetSortFields().Select(x => x.Key));
 		}
 
-		[SwaggerOperation(Summary = "Retrieves all posts")]
+		[SwaggerOperation(Summary = "Retrieves all food")]
 		[HttpGet]
 		public async Task<IActionResult> Get([FromQuery] PaginationFilter paginationFilter,
 			[FromQuery] SortingFilter sortingFilter,
@@ -48,7 +48,25 @@ namespace API.Controllers
 			return Ok(PaginationHelper.CreatePagedResponse(posts, validPaginationFilter, totalRecords));
 		}
 
-		[SwaggerOperation(Summary = "Retrieves a specific post by unique id")]
+		[SwaggerOperation(Summary = "Retrieves all food with accept status")]
+		[HttpGet("ShowWithStatus")]
+		public async Task<IActionResult> GetAccepted([FromQuery] PaginationFilter paginationFilter,
+		   [FromQuery] SortingFilter sortingFilter,
+		   [FromQuery] string filterBy = "",
+		   [FromQuery] bool isAccepted = true)
+		{
+			var validPaginationFilter = new PaginationFilter(paginationFilter.PageNumber, paginationFilter.PageSize);
+			var validSortingFilter = new SortingFilter(sortingFilter.SortField, sortingFilter.Ascending);
+
+			var posts = await _foodService.GetAllFoodWithStatusAsync(validPaginationFilter.PageNumber, validPaginationFilter.PageSize,
+															validSortingFilter.SortField, validSortingFilter.Ascending,
+															filterBy, isAccepted);
+
+			var totalRecords = await _foodService.GetAllFoodCountAsync(filterBy);
+			return Ok(PaginationHelper.CreatePagedResponse(posts, validPaginationFilter, totalRecords));
+		}
+
+		[SwaggerOperation(Summary = "Retrieves a specific food by id")]
 		[AllowAnonymous]
 		[HttpGet("{id}")]
 		public async Task<IActionResult> Get(int id)
@@ -61,7 +79,7 @@ namespace API.Controllers
 			return Ok(new Response<FoodDto>(food));
 		}
 
-		[SwaggerOperation(Summary = "Creates new post")]
+		[SwaggerOperation(Summary = "Creates new food")]
 		[HttpPost]
 		public async Task<IActionResult> Create(CreateFoodDto newPost)
 		{
@@ -69,7 +87,7 @@ namespace API.Controllers
 			return Created($"api/posts/{food.Id}", new Response<FoodDto>(food));
 		}
 
-		[SwaggerOperation(Summary = "Updates existing post")]
+		[SwaggerOperation(Summary = "Updates existing food")]
 		[HttpPut]
 		public async Task<IActionResult> Update(UpdateFoodDto updatePost)
 		{
@@ -85,7 +103,7 @@ namespace API.Controllers
 			return NoContent();
 		}
 
-		[SwaggerOperation(Summary = "Deletes specific post")]
+		[SwaggerOperation(Summary = "Deletes specific food")]
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> Delete(int id)
 		{

@@ -52,6 +52,7 @@ namespace Infrastructure.Repositories
 
 		public async Task<Food> AddAsync(Food food)
 		{
+			food.IsAccepted = false;
 			var createdFood = await _context.Food.AddAsync(food);
 			await _context.SaveChangesAsync();
 			return createdFood.Entity;
