@@ -1,11 +1,8 @@
 ﻿using Domain.Repositories;
+using Infrastructure.Identity;
 using Infrastructure.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure
 {
@@ -13,6 +10,10 @@ namespace Infrastructure
 	{
 		public static IServiceCollection AddInfrastructure(this IServiceCollection services)
 		{
+			services.AddIdentity<ApplicationUser, IdentityRole>()
+				   .AddEntityFrameworkStores<Context>()
+				   .AddDefaultTokenProviders();
+
 			services.AddScoped<IFoodRepository, FoodRepository>();
 			return services;
 		}

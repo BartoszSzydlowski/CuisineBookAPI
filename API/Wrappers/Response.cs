@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace API.Wrappers
 {
@@ -14,7 +11,6 @@ namespace API.Wrappers
 
 		public Response()
 		{
-
 		}
 
 		public Response(T data)
@@ -28,9 +24,9 @@ namespace API.Wrappers
 	{
 		public bool Succeeded { get; set; }
 		public string Message { get; set; }
+
 		public Response()
 		{
-
 		}
 
 		public Response(bool succeeded, string message)
