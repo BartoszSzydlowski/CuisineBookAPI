@@ -15,7 +15,9 @@ namespace Infrastructure
 		{
 			var userRoleId = Guid.NewGuid().ToString();
 			var adminRoleId = Guid.NewGuid().ToString();
+
 			var defaultUserId = Guid.NewGuid().ToString();
+			var defaultAdminId = Guid.NewGuid().ToString();
 
 			var hasher = new PasswordHasher<ApplicationUser>();
 
@@ -40,12 +42,32 @@ namespace Infrastructure
 			builder.Entity<ApplicationUser>().HasData(
 				new ApplicationUser
 				{
-					Email = "test@test.com",
+					Email = "testUser@test.com",
 					PasswordHash = hasher.HashPassword(null, "test"),
-					UserName = "test@test.com",
-					NormalizedEmail = "TEST@TEST.COM",
-					NormalizedUserName = "TEST@TEST.COM",
+					UserName = "testUser",
+					NormalizedEmail = "TESTUSER@TEST.COM",
+					NormalizedUserName = "TESTUSER",
 					Id = defaultUserId
+				}
+			);
+
+			builder.Entity<IdentityUserRole<string>>().HasData(
+				new IdentityUserRole<string>
+				{
+					RoleId = userRoleId,
+					UserId = defaultUserId
+				}
+			);
+
+			builder.Entity<ApplicationUser>().HasData(
+				new ApplicationUser
+				{
+					Email = "testAdmin@test.com",
+					PasswordHash = hasher.HashPassword(null, "test"),
+					UserName = "testAdmin",
+					NormalizedEmail = "TESTADMIN@TEST.COM",
+					NormalizedUserName = "TESTADMIN",
+					Id = defaultAdminId
 				}
 			);
 
@@ -54,7 +76,7 @@ namespace Infrastructure
 				new IdentityUserRole<string>
 				{
 					RoleId = adminRoleId,
-					UserId = defaultUserId
+					UserId = defaultAdminId
 				}
 			);
 		}

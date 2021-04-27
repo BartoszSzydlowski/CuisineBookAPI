@@ -16,8 +16,9 @@ namespace Application.ViewModel.FoodVm
 		public int CalorificValue { get; set; }
 		public string PreparingMethod { get; set; }
 		public string Cathegory { get; set; }
-		public bool IsAccepted { get; set; }
 		public DateTime CreationDate { get; set; }
+		public bool IsAccepted { get; set; }
+		public string UserId { get; set; }
 
 		public void Mapping(Profile profile)
 		{
