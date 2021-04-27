@@ -1,9 +1,11 @@
 ﻿using API.Models;
 using API.Wrappers;
 using Infrastructure.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -32,7 +34,8 @@ namespace API.Controllers
 		}
 
 		[HttpPost]
-		[Route("Register")]
+		[AllowAnonymous]
+		[Route("[action]")]
 		public async Task<IActionResult> Register(RegisterModel registerModel)
 		{
 			var userExists = await _userManager.FindByNameAsync(registerModel.Email);
@@ -74,7 +77,8 @@ namespace API.Controllers
 		}
 
 		[HttpPost]
-		[Route("RegisterAdmin")]
+		[Authorize(Roles = UserRoles.Admin)]
+		[Route("[action]")]
 		public async Task<IActionResult> RegisterAdmin(RegisterModel registerModel)
 		{
 			var userExists = await _userManager.FindByNameAsync(registerModel.Email);
@@ -100,7 +104,7 @@ namespace API.Controllers
 				return StatusCode(StatusCodes.Status500InternalServerError, new Response<bool>
 				{
 					Succeeded = false,
-					Message = "User creation failed! Please check user details and try again",
+					Message = "Admin user creation failed! Please check user details and try again",
 					Errors = result.Errors.Select(x => x.Description)
 				});
 			}
@@ -116,7 +120,8 @@ namespace API.Controllers
 		}
 
 		[HttpPost]
-		[Route("Login")]
+		[AllowAnonymous]
+		[Route("[action]")]
 		public async Task<IActionResult> Login(LoginModel loginModel)
 		{
 			var user = await _userManager.FindByNameAsync(loginModel.Email);
@@ -150,7 +155,8 @@ namespace API.Controllers
 				});
 			}
 
-			return Unauthorized();
+			return Unauthorized(new Response<bool> { Succeeded = false, Message = "Bad credentials. Check email or password" });
+			//return Unauthorized();
 		}
 	}
 }

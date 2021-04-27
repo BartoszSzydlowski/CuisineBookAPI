@@ -30,16 +30,22 @@ namespace Infrastructure
 			foreach (var entry in entries)
 			{
 				((AuditableEntity)entry.Entity).LastModified = DateTime.UtcNow;
-				//((AuditableEntity)entry.Entity).LastModifiedBy = _userResolverService.GetUser();
+				((AuditableEntity)entry.Entity).LastModifiedBy = _userResolverService.GetUser();
 
 				if (entry.State == EntityState.Added)
 				{
 					((AuditableEntity)entry.Entity).Created = DateTime.UtcNow;
-					//((AuditableEntity)entry.Entity).CreatedBy = _userResolverService.GetUser();
+					((AuditableEntity)entry.Entity).CreatedBy = _userResolverService.GetUser();
 				}
 			}
 
 			return await base.SaveChangesAsync();
+		}
+
+		protected override void OnModelCreating(ModelBuilder builder)
+		{
+			builder.Seed();
+			base.OnModelCreating(builder);
 		}
 	}
 }

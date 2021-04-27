@@ -21,6 +21,6 @@ namespace Application.Interfaces
 
 		Task DeleteFoodAsync(int id);
 
-		//Task<bool> UserOwnsFoodAsync(int foodId, string userId);
+		Task<bool> UserOwnsFoodAsync(int foodId, string userId);
 	}
 }

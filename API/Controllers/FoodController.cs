@@ -3,6 +3,7 @@ using API.Helpers;
 using API.Wrappers;
 using Application.Interfaces;
 using Application.ViewModel.FoodVm;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -12,7 +13,6 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
-	[AllowAnonymous]
 	[Route("api/[controller]")]
 	[ApiController]
 	public class FoodController : ControllerBase
@@ -24,6 +24,7 @@ namespace API.Controllers
 			_foodService = foodService;
 		}
 
+		[AllowAnonymous]
 		[SwaggerOperation(Summary = "Retrieves sort fields")]
 		[HttpGet("[action]")]
 		public IActionResult GetSortFields()
@@ -31,6 +32,7 @@ namespace API.Controllers
 			return Ok(SortingHelper.GetSortFields().Select(x => x.Key));
 		}
 
+		[Authorize(Roles = UserRoles.Admin)]
 		[SwaggerOperation(Summary = "Retrieves all food")]
 		[HttpGet]
 		public async Task<IActionResult> Get([FromQuery] PaginationFilter paginationFilter,
@@ -48,8 +50,9 @@ namespace API.Controllers
 			return Ok(PaginationHelper.CreatePagedResponse(posts, validPaginationFilter, totalRecords));
 		}
 
+		[AllowAnonymous]
 		[SwaggerOperation(Summary = "Retrieves all food with accept status")]
-		[HttpGet("ShowWithStatus")]
+		[HttpGet("[action]")]
 		public async Task<IActionResult> GetAccepted([FromQuery] PaginationFilter paginationFilter,
 		   [FromQuery] SortingFilter sortingFilter,
 		   [FromQuery] string filterBy = "",
@@ -80,6 +83,7 @@ namespace API.Controllers
 		}
 
 		[SwaggerOperation(Summary = "Creates new food")]
+		[Authorize(Roles = UserRoles.AdminOrUser)]
 		[HttpPost]
 		public async Task<IActionResult> Create(CreateFoodDto newPost)
 		{
@@ -88,32 +92,34 @@ namespace API.Controllers
 		}
 
 		[SwaggerOperation(Summary = "Updates existing food")]
+		[Authorize(Roles = UserRoles.AdminOrUser)]
 		[HttpPut]
 		public async Task<IActionResult> Update(UpdateFoodDto updatePost)
 		{
-			//var userOwnsPost = await _foodService.UserOwnsFoodAsync(updatePost.Id, User.FindFirstValue(ClaimTypes.NameIdentifier));
-			//var isAdmin = User.IsInRole(UserRoles.Admin);
+			var userOwnsPost = await _foodService.UserOwnsFoodAsync(updatePost.Id, User.FindFirstValue(ClaimTypes.NameIdentifier));
+			var isAdmin = User.IsInRole(UserRoles.Admin);
 
-			//if (!isAdmin && !userOwnsPost)
-			//{
-			//	return BadRequest(new Response(false, "You don't own this post"));
-			//}
+			if (!isAdmin && !userOwnsPost)
+			{
+				return BadRequest(new Response(false, "You don't own this post"));
+			}
 
 			await _foodService.UpdateFoodAsync(updatePost);
 			return NoContent();
 		}
 
 		[SwaggerOperation(Summary = "Deletes specific food")]
+		[Authorize(Roles = UserRoles.AdminOrUser)]
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> Delete(int id)
 		{
-			//var userOwnsPost = await _foodService.UserOwnsFoodAsync(id, User.FindFirstValue(ClaimTypes.NameIdentifier));
-			//var isAdmin = User.IsInRole(UserRoles.Admin);
+			var userOwnsPost = await _foodService.UserOwnsFoodAsync(id, User.FindFirstValue(ClaimTypes.NameIdentifier));
+			var isAdmin = User.IsInRole(UserRoles.Admin);
 
-			//if (!isAdmin && !userOwnsPost)
-			//{
-			//	return BadRequest(new Response(false, "You don't own this post"));
-			//}
+			if (!isAdmin && !userOwnsPost)
+			{
+				return BadRequest(new Response(false, "You don't own this post"));
+			}
 
 			await _foodService.DeleteFoodAsync(id);
 			return NoContent();

@@ -51,7 +51,7 @@ namespace Application.Services
 			}
 
 			var food = _mapper.Map<Food>(newFood);
-			//food.UserId = userId;
+			food.UserId = userId;
 			var result = await _foodRepository.AddAsync(food);
 			return _mapper.Map<FoodDto>(result);
 		}
@@ -69,21 +69,21 @@ namespace Application.Services
 			await _foodRepository.DeleteAsync(food);
 		}
 
-		//public async Task<bool> UserOwnsFoodAsync(int foodId, string userId)
-		//{
-		//	var food = await _foodRepository.GetByIdAsync(foodId);
+		public async Task<bool> UserOwnsFoodAsync(int foodId, string userId)
+		{
+			var food = await _foodRepository.GetByIdAsync(foodId);
 
-		//	if (food == null)
-		//	{
-		//		return false;
-		//	}
+			if (food == null)
+			{
+				return false;
+			}
 
-		//	if (food.UserId != userId)
-		//	{
-		//		return false;
-		//	}
+			if (food.UserId != userId)
+			{
+				return false;
+			}
 
-		//	return true;
-		//}
+			return true;
+		}
 	}
 }

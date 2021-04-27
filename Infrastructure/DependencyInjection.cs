@@ -10,7 +10,14 @@ namespace Infrastructure
 	{
 		public static IServiceCollection AddInfrastructure(this IServiceCollection services)
 		{
-			services.AddIdentity<ApplicationUser, IdentityRole>()
+			services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+			{
+				options.Password.RequiredLength = 3;
+				options.Password.RequireLowercase = false;
+				options.Password.RequireUppercase = false;
+				options.Password.RequireNonAlphanumeric = false;
+				options.Password.RequireDigit = false;
+			})
 				   .AddEntityFrameworkStores<Context>()
 				   .AddDefaultTokenProviders();
 

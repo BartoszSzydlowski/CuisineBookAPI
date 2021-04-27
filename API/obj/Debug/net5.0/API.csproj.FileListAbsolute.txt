@@ -73,12 +73,4 @@ C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\ob
 C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\obj\Debug\net5.0\ref\API.dll
 C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\obj\Debug\net5.0\API.pdb
 C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\obj\Debug\net5.0\API.genruntimeconfig.cache
-C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\bin\Debug\net5.0\Microsoft.AspNetCore.OData.dll
-C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
-C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
-C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\bin\Debug\net5.0\Microsoft.OData.Core.dll
-C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\bin\Debug\net5.0\Microsoft.OData.Edm.dll
-C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\bin\Debug\net5.0\Microsoft.Spatial.dll
-C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\bin\Debug\net5.0\Newtonsoft.Json.dll
-C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\bin\Debug\net5.0\OData.Swagger.dll
 C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll

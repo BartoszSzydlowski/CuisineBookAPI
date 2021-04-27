@@ -71,6 +71,11 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Food");
@@ -139,6 +144,24 @@ namespace Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "ea9c270d-4b99-4ef3-aa9e-1659ac71bcef",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b993d027-2ed0-4771-b913-27d3b04626ed",
+                            Email = "test@test.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "TEST@TEST.COM",
+                            NormalizedUserName = "TEST@TEST.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJxZZr503kDyOSmweVFeWrXEgwtQOmUNC6cexIOQD2XWxFKDuojpZrLQKQac0qlrrw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "dcda6f94-78a9-42a0-bf3f-b906c1dbd157",
+                            TwoFactorEnabled = false,
+                            UserName = "test@test.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -166,6 +189,22 @@ namespace Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "44764de0-e0f2-4843-b684-73c137a0375e",
+                            ConcurrencyStamp = "f47c9fbf-5d25-430e-91cf-6de4ea49ee88",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "3710ca18-c46d-4e81-aa08-ff1bb13085e3",
+                            ConcurrencyStamp = "bf3c499b-a646-48d6-8eb6-a050d03f693a",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -251,6 +290,13 @@ namespace Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "ea9c270d-4b99-4ef3-aa9e-1659ac71bcef",
+                            RoleId = "44764de0-e0f2-4843-b684-73c137a0375e"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

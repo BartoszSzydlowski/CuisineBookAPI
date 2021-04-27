@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lml5Nwtyh4PS/QksMqiRPQE18U4VO3mL3jCKs9ltPN0YHDo4Cwo6LJP90hPiGGSrx5e2gCHh09Bz1xUTzL0/RQ==",
+  "dgSpecHash": "Vg4Xk9dTGGGsK1m1NVoxVi/MbFKgqJ0de+SG468RLWGohntNPe+hjJdwvg4smoRg1nAwLf18eX10DA8rrvlJHw==",
   "success": true,
   "projectFilePath": "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Application\\Application.csproj",
   "expectedPackageFiles": [
@@ -37,14 +37,10 @@
     "C:\\Users\\BARTEK\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\BARTEK\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\BARTEK\\.nuget\\packages\\microsoft.extensions.webencoders\\2.2.0\\microsoft.extensions.webencoders.2.2.0.nupkg.sha512",
-    "C:\\Users\\BARTEK\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.10.2\\microsoft.identitymodel.jsonwebtokens.6.10.2.nupkg.sha512",
-    "C:\\Users\\BARTEK\\.nuget\\packages\\microsoft.identitymodel.logging\\6.10.2\\microsoft.identitymodel.logging.6.10.2.nupkg.sha512",
-    "C:\\Users\\BARTEK\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.10.2\\microsoft.identitymodel.tokens.6.10.2.nupkg.sha512",
     "C:\\Users\\BARTEK\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\BARTEK\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\BARTEK\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
-    "C:\\Users\\BARTEK\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.10.2\\system.identitymodel.tokens.jwt.6.10.2.nupkg.sha512",
     "C:\\Users\\BARTEK\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\BARTEK\\.nuget\\packages\\system.security.accesscontrol\\4.5.0\\system.security.accesscontrol.4.5.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",

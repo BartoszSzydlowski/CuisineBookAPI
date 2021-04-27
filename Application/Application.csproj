@@ -7,15 +7,10 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.10.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModel\UserVm\" />
   </ItemGroup>
 
 </Project>

@@ -61,6 +61,7 @@ namespace Infrastructure.Migrations
                     CalorificValue = table.Column<int>(type: "int", nullable: false),
                     PreparingMethod = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Cathegory = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", maxLength: 450, nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -176,6 +177,26 @@ namespace Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "44764de0-e0f2-4843-b684-73c137a0375e", "f47c9fbf-5d25-430e-91cf-6de4ea49ee88", "Admin", "ADMIN" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "3710ca18-c46d-4e81-aa08-ff1bb13085e3", "bf3c499b-a646-48d6-8eb6-a050d03f693a", "User", "USER" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "ea9c270d-4b99-4ef3-aa9e-1659ac71bcef", 0, "b993d027-2ed0-4771-b913-27d3b04626ed", "test@test.com", false, false, null, "TEST@TEST.COM", "TEST@TEST.COM", "AQAAAAEAACcQAAAAEJxZZr503kDyOSmweVFeWrXEgwtQOmUNC6cexIOQD2XWxFKDuojpZrLQKQac0qlrrw==", null, false, "dcda6f94-78a9-42a0-bf3f-b906c1dbd157", false, "test@test.com" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "44764de0-e0f2-4843-b684-73c137a0375e", "ea9c270d-4b99-4ef3-aa9e-1659ac71bcef" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
