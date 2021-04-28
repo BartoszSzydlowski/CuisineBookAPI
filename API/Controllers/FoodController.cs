@@ -3,7 +3,7 @@ using API.Helpers;
 using API.Wrappers;
 using Application.Interfaces;
 using Application.ViewModel.FoodVm;
-using Infrastructure.Identity;
+using Domain.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -80,6 +80,27 @@ namespace API.Controllers
 				return NotFound();
 			}
 			return Ok(new Response<FoodDto>(food));
+		}
+
+
+		[SwaggerOperation(Summary = "Search with phrase")]
+		[AllowAnonymous]
+		[HttpGet("{search}")]
+		public async Task<IActionResult> Search([FromQuery] PaginationFilter paginationFilter,
+		   [FromQuery] SortingFilter sortingFilter,
+		   [FromQuery] string filterBy = "",
+		   [FromQuery] bool isAccepted = true,
+		   [FromQuery] string searchPhrase = "")
+		{
+			var validPaginationFilter = new PaginationFilter(paginationFilter.PageNumber, paginationFilter.PageSize);
+			var validSortingFilter = new SortingFilter(sortingFilter.SortField, sortingFilter.Ascending);
+
+			var posts = await _foodService.SearchAsync(validPaginationFilter.PageNumber, validPaginationFilter.PageSize,
+															validSortingFilter.SortField, validSortingFilter.Ascending,
+															filterBy, isAccepted, searchPhrase);
+
+			var totalRecords = await _foodService.GetAllFoodCountAsync(filterBy);
+			return Ok(PaginationHelper.CreatePagedResponse(posts, validPaginationFilter, totalRecords));
 		}
 
 		[SwaggerOperation(Summary = "Creates new food")]

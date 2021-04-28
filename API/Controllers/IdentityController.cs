@@ -1,6 +1,7 @@
 ﻿using API.Models;
 using API.Wrappers;
-using Infrastructure.Identity;
+using Application.Interfaces;
+using Domain.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -52,7 +53,7 @@ namespace API.Controllers
 			{
 				Email = registerModel.Email,
 				SecurityStamp = Guid.NewGuid().ToString(),
-				UserName = registerModel.Email
+				UserName = registerModel.Username
 			};
 
 			var result = await _userManager.CreateAsync(newUser, registerModel.Password);
@@ -77,62 +78,23 @@ namespace API.Controllers
 		}
 
 		[HttpPost]
-		[Authorize(Roles = UserRoles.Admin)]
-		[Route("[action]")]
-		public async Task<IActionResult> RegisterAdmin(RegisterModel registerModel)
-		{
-			var userExists = await _userManager.FindByNameAsync(registerModel.Email);
-			if (userExists != null)
-			{
-				return StatusCode(StatusCodes.Status500InternalServerError, new Response<bool>
-				{
-					Succeeded = false,
-					Message = "User already exists!"
-				});
-			}
-
-			ApplicationUser newUser = new ApplicationUser()
-			{
-				Email = registerModel.Email,
-				SecurityStamp = Guid.NewGuid().ToString(),
-				UserName = registerModel.Email
-			};
-
-			var result = await _userManager.CreateAsync(newUser, registerModel.Password);
-			if (!result.Succeeded)
-			{
-				return StatusCode(StatusCodes.Status500InternalServerError, new Response<bool>
-				{
-					Succeeded = false,
-					Message = "Admin user creation failed! Please check user details and try again",
-					Errors = result.Errors.Select(x => x.Description)
-				});
-			}
-
-			if (!await _roleManager.RoleExistsAsync(UserRoles.Admin))
-			{
-				await _roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
-			}
-
-			await _userManager.AddToRoleAsync(newUser, UserRoles.Admin);
-
-			return Ok(new Response<bool> { Succeeded = true, Message = "User created successfully!" });
-		}
-
-		[HttpPost]
 		[AllowAnonymous]
 		[Route("[action]")]
 		public async Task<IActionResult> Login(LoginModel loginModel)
 		{
-			var user = await _userManager.FindByNameAsync(loginModel.Email);
-			if (user != null && await _userManager.CheckPasswordAsync(user, loginModel.Password))
+			IActionResult response = Unauthorized();
+
+			var user = await _userManager.FindByNameAsync(loginModel.Username);
+			var checkPassword = await _userManager.CheckPasswordAsync(user, loginModel.Password);
+			if (user != null && checkPassword)
 			{
 				var authClaims = new List<Claim>
-				{
-					new Claim(ClaimTypes.NameIdentifier, user.Id),
-					new Claim(ClaimTypes.Name, user.UserName),
-					new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-				};
+					{
+						new Claim(ClaimTypes.NameIdentifier, user.Id),
+						new Claim(ClaimTypes.Name, user.UserName),
+						new Claim(ClaimTypes.Email, user.Email),
+						new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+					};
 
 				var userRoles = await _userManager.GetRolesAsync(user);
 				foreach (var role in userRoles)
@@ -148,15 +110,16 @@ namespace API.Controllers
 					signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
 					);
 
-				return Ok(new
+				response = Ok(new
 				{
 					token = new JwtSecurityTokenHandler().WriteToken(token),
 					expiration = token.ValidTo
 				});
 			}
 
-			return Unauthorized(new Response<bool> { Succeeded = false, Message = "Bad credentials. Check email or password" });
-			//return Unauthorized();
+			//return Unauthorized(new Response<bool> { Succeeded = false, Message = "Bad credentials. Check email or password" });
+
+			return response;
 		}
 	}
 }

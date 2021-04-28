@@ -10,6 +10,7 @@ namespace Application
 		public static IServiceCollection AddApplication(this IServiceCollection services)
 		{
 			services.AddAutoMapper(Assembly.GetExecutingAssembly());
+			services.AddTransient<IUserService, UserService>();
 			services.AddScoped<IFoodService, FoodService>();
 
 			return services;

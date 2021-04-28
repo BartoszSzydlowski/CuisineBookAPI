@@ -1,5 +1,5 @@
-﻿using Domain.Repositories;
-using Infrastructure.Identity;
+﻿using Domain.Identity;
+using Domain.Repositories;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +21,7 @@ namespace Infrastructure
 				   .AddEntityFrameworkStores<Context>()
 				   .AddDefaultTokenProviders();
 
+			services.AddTransient<IUserRepository, UserRepository>();
 			services.AddScoped<IFoodRepository, FoodRepository>();
 			return services;
 		}

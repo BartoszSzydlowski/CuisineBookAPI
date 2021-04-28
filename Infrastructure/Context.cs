@@ -1,6 +1,6 @@
 ﻿using Application.Services;
+using Domain.Identity;
 using Domain.Models;
-using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -29,12 +29,12 @@ namespace Infrastructure
 
 			foreach (var entry in entries)
 			{
-				((AuditableEntity)entry.Entity).LastModified = DateTime.UtcNow;
+				((AuditableEntity)entry.Entity).LastModified = DateTime.Now;
 				((AuditableEntity)entry.Entity).LastModifiedBy = _userResolverService.GetUser();
 
 				if (entry.State == EntityState.Added)
 				{
-					((AuditableEntity)entry.Entity).Created = DateTime.UtcNow;
+					((AuditableEntity)entry.Entity).Created = DateTime.Now;
 					((AuditableEntity)entry.Entity).CreatedBy = _userResolverService.GetUser();
 				}
 			}

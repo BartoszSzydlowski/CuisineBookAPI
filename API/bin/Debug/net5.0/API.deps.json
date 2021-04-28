@@ -1558,7 +1558,10 @@
         "dependencies": {
           "AutoMapper": "10.1.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
-          "Domain": "1.0.0"
+          "Domain": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.5",
+          "Microsoft.AspNetCore.Authentication.OpenIdConnect": "5.0.5",
+          "Microsoft.EntityFrameworkCore": "5.0.5"
         },
         "runtime": {
           "Application.dll": {}
@@ -1582,7 +1585,6 @@
       "Infrastructure/1.0.0": {
         "dependencies": {
           "Application": "1.0.0",
-          "Domain": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.5",
           "Microsoft.EntityFrameworkCore": "5.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.5"
