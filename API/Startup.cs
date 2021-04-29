@@ -1,6 +1,4 @@
 using API.Middleware;
-using API.Models;
-using API.Validators;
 using Application;
 using Application.Services;
 using Application.Validators.FoodValidator;

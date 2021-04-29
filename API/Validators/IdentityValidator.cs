@@ -8,28 +8,29 @@
 //		[System.Obsolete]
 //		public IdentityValidator()
 //		{
-//			CascadeMode = CascadeMode.Continue;
+//			RuleSet("Username", () =>
+//			{
+//				#region Email
 
-//			#region Email
+//				RuleFor(x => x.Email).NotEmpty().WithMessage("E-mail field can't be empty");
+//				RuleFor(x => x.Email).EmailAddress().WithMessage("Incorrect e-mail format");
 
-//			RuleFor(x => x.Email).NotEmpty().WithMessage("E-mail field can't be empty");
-//			RuleFor(x => x.Email).EmailAddress().WithMessage("Incorrect e-mail format");
+//				#endregion
 
-//			#endregion
+//				#region Password
 
-//			#region Password
+//				RuleFor(x => x.Password).NotEmpty().WithMessage("Password field can't be empty");
+//				RuleFor(x => x.Password).MinimumLength(3).WithMessage("Password must have at least 3 characters");
 
-//			RuleFor(x => x.Password).NotEmpty().WithMessage("Password field can't be empty");
-//			RuleFor(x => x.Password).MinimumLength(3).WithMessage("Password must have at least 3 characters");
+//				#endregion
 
-//			#endregion
+//				#region Username
 
-//			#region Username
+//				RuleFor(x => x.Username).NotEmpty().WithMessage("Username field can't be empty");
+//				RuleFor(x => x.Username).MinimumLength(3).WithMessage("Username must have at least 3 characters");
 
-//			RuleFor(x => x.Username).NotEmpty().WithMessage("Username field can't be empty");
-//			RuleFor(x => x.Username).MinimumLength(3).WithMessage("Username must have at least 3 characters");
-
-//			#endregion
+//				#endregion
+//			});
 //		}
 //	}
 //}
