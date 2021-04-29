@@ -33,7 +33,6 @@ namespace API.Controllers
 			_configuration = configuration;
 		}
 
-		[ValidateFilter]
 		[HttpPost]
 		[AllowAnonymous]
 		[Route("[action]")]
