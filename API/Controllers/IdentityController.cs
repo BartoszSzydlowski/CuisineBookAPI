@@ -33,6 +33,7 @@ namespace API.Controllers
 			_configuration = configuration;
 		}
 
+		[ValidateFilter]
 		[HttpPost]
 		[AllowAnonymous]
 		[Route("[action]")]
@@ -76,6 +77,8 @@ namespace API.Controllers
 		[Route("[action]")]
 		public async Task<IActionResult> Login(LoginModel loginModel)
 		{
+			IActionResult response = Unauthorized();
+
 			var user = await _userManager.FindByNameAsync(loginModel.Username);
 			var checkPassword = await _userManager.CheckPasswordAsync(user, loginModel.Password);
 			if (user != null && checkPassword)
@@ -102,22 +105,14 @@ namespace API.Controllers
 					signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
 					);
 
-				return Ok(new
+				response =  Ok(new
 				{
 					token = new JwtSecurityTokenHandler().WriteToken(token),
 					expiration = token.ValidTo
 				});
 			}
 
-			return Unauthorized(new object[]
-			{
-				new Response<bool>
-				{
-					Succeeded = false,
-					Message = "Bad credentials. Check email or password"
-				},
-				new { StatusCode = StatusCodes.Status401Unauthorized }
-			});
+			return response;
 		}
 	}
 }

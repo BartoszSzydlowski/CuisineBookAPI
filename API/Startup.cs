@@ -1,4 +1,5 @@
 using API.Middleware;
+using API.Validators;
 using Application;
 using Application.Services;
 using Application.Validators.FoodValidator;
@@ -33,7 +34,7 @@ namespace API
 				.AddFluentValidation(options =>
 				{
 					options.RegisterValidatorsFromAssemblyContaining<CreateFoodDtoValidator>();
-					//options.RegisterValidatorsFromAssemblyContaining<IdentityValidator>();
+					options.RegisterValidatorsFromAssemblyContaining<IdentityValidator>();
 				})
 				.AddJsonOptions(options =>
 				{
