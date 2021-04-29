@@ -21,7 +21,7 @@ namespace Infrastructure
 				   .AddEntityFrameworkStores<Context>()
 				   .AddDefaultTokenProviders();
 
-			services.AddTransient<IUserRepository, UserRepository>();
+			services.AddScoped<IUserRepository, UserRepository>();
 			services.AddScoped<IFoodRepository, FoodRepository>();
 			return services;
 		}

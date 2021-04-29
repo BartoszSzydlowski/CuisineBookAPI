@@ -3,12 +3,8 @@ using Application.Interfaces;
 using Application.ViewModel.UserVm;
 using Domain.Identity;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -75,7 +71,6 @@ namespace API.Controllers
 		[Authorize(Roles = UserRoles.Admin)]
 		public async Task<IActionResult> AddAdminUserAsync(CreateUserDto dto)
 		{
-
 			var user = await _userService.AddAdminUserAsync(dto);
 			return Ok(user);
 		}

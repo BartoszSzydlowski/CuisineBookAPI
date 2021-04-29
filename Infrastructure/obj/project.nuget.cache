@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "cd5VH5yV+n6YSTGQLJ82C/pI4QvBUdMG58rh5XAlYfYAv4HwQg0lemNifvN9icotUAQIeU9HJn2iq1XRe6qIWg==",
+  "dgSpecHash": "rgtziNjT4+5hN0z39AmPfqoJDwwwB6gfF7iSu88k05H7fxkW4KrVapqZGYJp6jLn8tZbXtpY/iCoLQyRsKiQVg==",
   "success": true,
   "projectFilePath": "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BARTEK\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\BARTEK\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "C:\\Users\\BARTEK\\.nuget\\packages\\fluentvalidation\\10.1.0\\fluentvalidation.10.1.0.nupkg.sha512",
+    "C:\\Users\\BARTEK\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.1.0\\fluentvalidation.aspnetcore.10.1.0.nupkg.sha512",
+    "C:\\Users\\BARTEK\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.1.0\\fluentvalidation.dependencyinjectionextensions.10.1.0.nupkg.sha512",
     "C:\\Users\\BARTEK\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\BARTEK\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\BARTEK\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

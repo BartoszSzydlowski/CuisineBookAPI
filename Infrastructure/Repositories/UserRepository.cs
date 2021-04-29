@@ -1,11 +1,8 @@
 ﻿using Domain.Identity;
 using Domain.Repositories;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
@@ -45,7 +42,7 @@ namespace Infrastructure.Repositories
 		{
 			var findUser = await _userManager.FindByNameAsync(user.UserName);
 
-			if(findUser != null)
+			if (findUser != null)
 			{
 				throw new Exception("User already exists");
 			}
@@ -61,7 +58,7 @@ namespace Infrastructure.Repositories
 
 			var roleResult = await _userManager.AddToRoleAsync(newUser, UserRoles.User);
 
-			if(!userResult.Succeeded || !roleResult.Succeeded)
+			if (!userResult.Succeeded || !roleResult.Succeeded)
 			{
 				throw new Exception("Failed to create user");
 			}

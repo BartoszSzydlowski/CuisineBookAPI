@@ -10,9 +10,10 @@ namespace Domain.Repositories
 
 		Task<IEnumerable<Food>> GetAllWithStatusAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted);
 
-
 		Task<Food> GetByIdAsync(int id);
+
 		Task<IEnumerable<Food>> SearchAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted, string searchPhrase);
+
 		Task<int> GetAllCountAsync(string filterBy);
 
 		Task<Food> AddAsync(Food food);

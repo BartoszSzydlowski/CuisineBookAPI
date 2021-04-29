@@ -1,5 +1,4 @@
 ﻿using Application.ViewModel.FoodVm;
-using Domain.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,6 +9,7 @@ namespace Application.Interfaces
 		Task<IEnumerable<FoodDto>> GetAllFoodAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy);
 
 		Task<IEnumerable<FoodDto>> GetAllFoodWithStatusAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted);
+
 		Task<IEnumerable<FoodDto>> SearchAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted, string searchPhrase);
 
 		Task<int> GetAllFoodCountAsync(string filterBy);

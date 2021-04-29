@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210427151221_AddingDefaultUser")]
-    partial class AddingDefaultUser
+    [Migration("20210429023508_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,69 +21,7 @@ namespace Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Domain.Models.Food", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CalorificValue")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Cathegory")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Difficulty")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageLink")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ingredients")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsAccepted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PreparationTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PreparingMethod")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Food");
-                });
-
-            modelBuilder.Entity("Infrastructure.Identity.ApplicationUser", b =>
+            modelBuilder.Entity("Domain.Identity.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -150,36 +88,99 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e2ce1ccc-8703-4d4c-a45f-9e9fbd26dc13",
+                            Id = "01aaa984-0d8a-4098-9bc2-cd1f39e13535",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9d7acd33-0fa5-4214-9709-ecb433a29d95",
+                            ConcurrencyStamp = "204833aa-840b-40ab-8ee2-009c2cb1bcb5",
                             Email = "testUser@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TESTUSER@TEST.COM",
                             NormalizedUserName = "TESTUSER",
-                            PasswordHash = "AQAAAAEAACcQAAAAELAzhcUxax1Wem8I+xdurnj/b+rm+MVzsQJxVAvuXUpMpBkuogTdFg5ZkPRdtVneng==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJeMJP80rD1LTyVf8gunK0EYOkHKqTelhoDAGIaT+PO3gQPl+P5iZvRtwbvsuCxY2Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a1bd267e-4706-44c2-ab01-c350b826a0a2",
+                            SecurityStamp = "22f961f9-1fc3-4caf-9409-070cfe51112f",
                             TwoFactorEnabled = false,
                             UserName = "testUser"
                         },
                         new
                         {
-                            Id = "920cd937-aa8a-4528-b2db-7a4466db27f0",
+                            Id = "9251729f-7dba-4130-8e14-b034eb88130b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7e4f306a-1d4e-4a96-88c8-eaf0679fe608",
+                            ConcurrencyStamp = "1377c5a9-99e9-4292-b8e4-f313cda64493",
                             Email = "testAdmin@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TESTADMIN@TEST.COM",
                             NormalizedUserName = "TESTADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGmI9bKDfr3Uk0cL4UypoWR/RQzVkRKIKcDf/KSyN6mZt+ILTjNVwA8ePjLFayTl+Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ2NwWI4TBW0Ld9STPSwn4NurDF34kXH2e0+IDySSIx245baJjpSDbNv7wbO7FeyJQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "025c8d7a-dcc0-410b-97b3-95cf007c13c9",
+                            SecurityStamp = "65ba1b50-b6db-457f-b824-70b635b66083",
                             TwoFactorEnabled = false,
                             UserName = "testAdmin"
                         });
+                });
+
+            modelBuilder.Entity("Domain.Models.Food", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CalorificValue")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cathegory")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Difficulty")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ingredients")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAccepted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PreparationTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PreparingMethod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Food");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -211,15 +212,15 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f6b25011-ebbf-4b35-9412-2a5baa3f1e03",
-                            ConcurrencyStamp = "e125f437-37c6-47e7-ba28-b9d02b3f9532",
+                            Id = "ecbeab67-20a2-4830-bb88-b2a981e58231",
+                            ConcurrencyStamp = "aa0f515f-c1c6-4fb4-8358-c123c04bb127",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "410b2e1d-1ba5-4326-911d-e3a9465a8fb0",
-                            ConcurrencyStamp = "89e19610-ab2e-4295-ab50-525f5d1b5ede",
+                            Id = "fb8a4719-d367-48db-b573-3e9f21736c81",
+                            ConcurrencyStamp = "3dabd07d-739f-479a-94f8-731099addfc9",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -312,13 +313,13 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "e2ce1ccc-8703-4d4c-a45f-9e9fbd26dc13",
-                            RoleId = "410b2e1d-1ba5-4326-911d-e3a9465a8fb0"
+                            UserId = "01aaa984-0d8a-4098-9bc2-cd1f39e13535",
+                            RoleId = "fb8a4719-d367-48db-b573-3e9f21736c81"
                         },
                         new
                         {
-                            UserId = "920cd937-aa8a-4528-b2db-7a4466db27f0",
-                            RoleId = "f6b25011-ebbf-4b35-9412-2a5baa3f1e03"
+                            UserId = "9251729f-7dba-4130-8e14-b034eb88130b",
+                            RoleId = "ecbeab67-20a2-4830-bb88-b2a981e58231"
                         });
                 });
 
@@ -352,7 +353,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Infrastructure.Identity.ApplicationUser", null)
+                    b.HasOne("Domain.Identity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -361,7 +362,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Infrastructure.Identity.ApplicationUser", null)
+                    b.HasOne("Domain.Identity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -376,7 +377,7 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Infrastructure.Identity.ApplicationUser", null)
+                    b.HasOne("Domain.Identity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -385,7 +386,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Infrastructure.Identity.ApplicationUser", null)
+                    b.HasOne("Domain.Identity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

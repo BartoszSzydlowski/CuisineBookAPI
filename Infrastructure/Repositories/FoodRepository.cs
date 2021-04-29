@@ -1,7 +1,6 @@
 ﻿using Domain.Models;
 using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -46,7 +45,7 @@ namespace Infrastructure.Repositories
 				   .Skip((pageNumber - 1) * pageSize)
 				   .Take(pageSize);
 
-			if(!string.IsNullOrEmpty(searchPhrase) || !string.IsNullOrWhiteSpace(searchPhrase))
+			if (!string.IsNullOrEmpty(searchPhrase) || !string.IsNullOrWhiteSpace(searchPhrase))
 			{
 				items = items.Where(e => e.Title.Contains(searchPhrase));
 			}

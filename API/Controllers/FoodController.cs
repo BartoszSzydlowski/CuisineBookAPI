@@ -1,4 +1,5 @@
-﻿using API.Filters;
+﻿using API.Attributes;
+using API.Filters;
 using API.Helpers;
 using API.Wrappers;
 using Application.Interfaces;
@@ -42,12 +43,12 @@ namespace API.Controllers
 			var validPaginationFilter = new PaginationFilter(paginationFilter.PageNumber, paginationFilter.PageSize);
 			var validSortingFilter = new SortingFilter(sortingFilter.SortField, sortingFilter.Ascending);
 
-			var posts = await _foodService.GetAllFoodAsync(validPaginationFilter.PageNumber, validPaginationFilter.PageSize,
+			var food = await _foodService.GetAllFoodAsync(validPaginationFilter.PageNumber, validPaginationFilter.PageSize,
 															validSortingFilter.SortField, validSortingFilter.Ascending,
 															filterBy);
 
 			var totalRecords = await _foodService.GetAllFoodCountAsync(filterBy);
-			return Ok(PaginationHelper.CreatePagedResponse(posts, validPaginationFilter, totalRecords));
+			return Ok(PaginationHelper.CreatePagedResponse(food, validPaginationFilter, totalRecords));
 		}
 
 		[AllowAnonymous]
@@ -61,12 +62,12 @@ namespace API.Controllers
 			var validPaginationFilter = new PaginationFilter(paginationFilter.PageNumber, paginationFilter.PageSize);
 			var validSortingFilter = new SortingFilter(sortingFilter.SortField, sortingFilter.Ascending);
 
-			var posts = await _foodService.GetAllFoodWithStatusAsync(validPaginationFilter.PageNumber, validPaginationFilter.PageSize,
+			var food = await _foodService.GetAllFoodWithStatusAsync(validPaginationFilter.PageNumber, validPaginationFilter.PageSize,
 															validSortingFilter.SortField, validSortingFilter.Ascending,
 															filterBy, isAccepted);
 
 			var totalRecords = await _foodService.GetAllFoodCountAsync(filterBy);
-			return Ok(PaginationHelper.CreatePagedResponse(posts, validPaginationFilter, totalRecords));
+			return Ok(PaginationHelper.CreatePagedResponse(food, validPaginationFilter, totalRecords));
 		}
 
 		[SwaggerOperation(Summary = "Retrieves a specific food by id")]
@@ -82,7 +83,6 @@ namespace API.Controllers
 			return Ok(new Response<FoodDto>(food));
 		}
 
-
 		[SwaggerOperation(Summary = "Search with phrase")]
 		[AllowAnonymous]
 		[HttpGet("{search}")]
@@ -95,29 +95,43 @@ namespace API.Controllers
 			var validPaginationFilter = new PaginationFilter(paginationFilter.PageNumber, paginationFilter.PageSize);
 			var validSortingFilter = new SortingFilter(sortingFilter.SortField, sortingFilter.Ascending);
 
-			var posts = await _foodService.SearchAsync(validPaginationFilter.PageNumber, validPaginationFilter.PageSize,
+			var food = await _foodService.SearchAsync(validPaginationFilter.PageNumber, validPaginationFilter.PageSize,
 															validSortingFilter.SortField, validSortingFilter.Ascending,
 															filterBy, isAccepted, searchPhrase);
 
 			var totalRecords = await _foodService.GetAllFoodCountAsync(filterBy);
-			return Ok(PaginationHelper.CreatePagedResponse(posts, validPaginationFilter, totalRecords));
+			return Ok(PaginationHelper.CreatePagedResponse(food, validPaginationFilter, totalRecords));
 		}
 
+		[ValidateFilter]
 		[SwaggerOperation(Summary = "Creates new food")]
 		[Authorize(Roles = UserRoles.AdminOrUser)]
 		[HttpPost]
-		public async Task<IActionResult> Create(CreateFoodDto newPost)
+		public async Task<IActionResult> Create(CreateFoodDto newFood)
 		{
-			var food = await _foodService.AddNewFoodAsync(newPost, User.FindFirstValue(ClaimTypes.NameIdentifier));
+			//var validator = new CreateFoodDtoValidator();
+			//var validatorResult = validator.Validate(newFood);
+
+			//if (!validatorResult.IsValid)
+			//{
+			//	return BadRequest(new Response<bool>
+			//	{
+			//		Succeeded = false,
+			//		Message = "Something went wrong",
+			//		Errors = validatorResult.Errors.Select(x => x.ErrorMessage)
+			//	});
+			//}
+
+			var food = await _foodService.AddNewFoodAsync(newFood, User.FindFirstValue(ClaimTypes.NameIdentifier));
 			return Created($"api/posts/{food.Id}", new Response<FoodDto>(food));
 		}
 
 		[SwaggerOperation(Summary = "Updates existing food")]
 		[Authorize(Roles = UserRoles.AdminOrUser)]
 		[HttpPut]
-		public async Task<IActionResult> Update(UpdateFoodDto updatePost)
+		public async Task<IActionResult> Update(UpdateFoodDto updateFood)
 		{
-			var userOwnsPost = await _foodService.UserOwnsFoodAsync(updatePost.Id, User.FindFirstValue(ClaimTypes.NameIdentifier));
+			var userOwnsPost = await _foodService.UserOwnsFoodAsync(updateFood.Id, User.FindFirstValue(ClaimTypes.NameIdentifier));
 			var isAdmin = User.IsInRole(UserRoles.Admin);
 
 			if (!isAdmin && !userOwnsPost)
@@ -125,7 +139,7 @@ namespace API.Controllers
 				return BadRequest(new Response(false, "You don't own this post"));
 			}
 
-			await _foodService.UpdateFoodAsync(updatePost);
+			await _foodService.UpdateFoodAsync(updateFood);
 			return NoContent();
 		}
 

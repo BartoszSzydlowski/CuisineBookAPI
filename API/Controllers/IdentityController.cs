@@ -1,12 +1,11 @@
-﻿using API.Models;
+﻿using API.Attributes;
+using API.Models;
 using API.Wrappers;
-using Application.Interfaces;
 using Domain.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -34,6 +33,7 @@ namespace API.Controllers
 			_configuration = configuration;
 		}
 
+		[ValidateFilter]
 		[HttpPost]
 		[AllowAnonymous]
 		[Route("[action]")]
@@ -67,11 +67,6 @@ namespace API.Controllers
 				});
 			}
 
-			if (!await _roleManager.RoleExistsAsync(UserRoles.User))
-			{
-				await _roleManager.CreateAsync(new IdentityRole(UserRoles.User));
-			}
-
 			await _userManager.AddToRoleAsync(newUser, UserRoles.User);
 
 			return Ok(new Response<bool> { Succeeded = true, Message = "User created successfully!" });
@@ -82,8 +77,6 @@ namespace API.Controllers
 		[Route("[action]")]
 		public async Task<IActionResult> Login(LoginModel loginModel)
 		{
-			IActionResult response = Unauthorized();
-
 			var user = await _userManager.FindByNameAsync(loginModel.Username);
 			var checkPassword = await _userManager.CheckPasswordAsync(user, loginModel.Password);
 			if (user != null && checkPassword)
@@ -110,16 +103,22 @@ namespace API.Controllers
 					signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
 					);
 
-				response = Ok(new
+				return Ok(new
 				{
 					token = new JwtSecurityTokenHandler().WriteToken(token),
 					expiration = token.ValidTo
 				});
 			}
 
-			//return Unauthorized(new Response<bool> { Succeeded = false, Message = "Bad credentials. Check email or password" });
-
-			return response;
+			return Unauthorized(new object[]
+			{
+				new Response<bool>
+				{
+					Succeeded = false,
+					Message = "Bad credentials. Check email or password"
+				},
+				new { StatusCode = StatusCodes.Status401Unauthorized }
+			});
 		}
 	}
 }

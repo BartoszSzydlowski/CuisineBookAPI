@@ -3,7 +3,6 @@ using Application.ViewModel.FoodVm;
 using AutoMapper;
 using Domain.Models;
 using Domain.Repositories;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -51,10 +50,15 @@ namespace Application.Services
 
 		public async Task<FoodDto> AddNewFoodAsync(CreateFoodDto newFood, string userId)
 		{
-			if (string.IsNullOrEmpty(newFood.Title))
-			{
-				throw new Exception("Title can't have an empty title");
-			}
+			//if (string.IsNullOrEmpty(newFood.Title) && string.IsNullOrWhiteSpace(newFood.Title))
+			//{
+			//	throw new Exception("Title can't have an empty title");
+			//}
+
+			//if(newFood.Title.Length < 5 && newFood.Title.Length > 100)
+			//{
+			//	throw new Exception("Title must be between 5 and 100 characters long");
+			//}
 
 			var food = _mapper.Map<Food>(newFood);
 			food.UserId = userId;

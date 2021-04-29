@@ -1,6 +1,9 @@
 using API.Middleware;
+using API.Models;
 using Application;
 using Application.Services;
+using Application.Validators.FoodValidator;
+using FluentValidation.AspNetCore;
 using Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -27,7 +30,16 @@ namespace API
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllers();
+			services.AddControllers()
+				.AddFluentValidation(options =>
+				{
+					options.RegisterValidatorsFromAssemblyContaining<CreateFoodDtoValidator>();
+					options.RegisterValidatorsFromAssemblyContaining<RegisterModel>();
+				})
+				.AddJsonOptions(options =>
+				{
+					options.JsonSerializerOptions.WriteIndented = true;
+				});
 
 			services.AddApplication();
 
@@ -81,7 +93,6 @@ namespace API
 					{ securityScheme, new string[] { } }
 				});
 			});
-
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

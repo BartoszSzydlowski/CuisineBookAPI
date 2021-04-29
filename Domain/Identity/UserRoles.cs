@@ -1,5 +1,4 @@
-﻿//namespace Infrastructure.Identity
-namespace Domain.Identity
+﻿namespace Domain.Identity
 {
 	public static class UserRoles
 	{

@@ -74,3 +74,6 @@ C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\ob
 C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\obj\Debug\net5.0\API.pdb
 C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\obj\Debug\net5.0\API.genruntimeconfig.cache
 C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\bin\Debug\net5.0\FluentValidation.dll
+C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
+C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\API\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
