@@ -131,12 +131,12 @@ namespace API.Controllers
 		[HttpPut]
 		public async Task<IActionResult> Update(UpdateFoodDto updateFood)
 		{
-			var userOwnsPost = await _foodService.UserOwnsFoodAsync(updateFood.Id, User.FindFirstValue(ClaimTypes.NameIdentifier));
+			var userOwnsFood = await _foodService.UserOwnsFoodAsync(updateFood.Id, User.FindFirstValue(ClaimTypes.NameIdentifier));
 			var isAdmin = User.IsInRole(UserRoles.Admin);
 
-			if (!isAdmin && !userOwnsPost)
+			if (!isAdmin && !userOwnsFood)
 			{
-				return BadRequest(new Response(false, "You don't own this post"));
+				return BadRequest(new Response(false, "You don't own this food"));
 			}
 
 			await _foodService.UpdateFoodAsync(updateFood);
@@ -148,12 +148,12 @@ namespace API.Controllers
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> Delete(int id)
 		{
-			var userOwnsPost = await _foodService.UserOwnsFoodAsync(id, User.FindFirstValue(ClaimTypes.NameIdentifier));
+			var userOwnsFood = await _foodService.UserOwnsFoodAsync(id, User.FindFirstValue(ClaimTypes.NameIdentifier));
 			var isAdmin = User.IsInRole(UserRoles.Admin);
 
-			if (!isAdmin && !userOwnsPost)
+			if (!isAdmin && !userOwnsFood)
 			{
-				return BadRequest(new Response(false, "You don't own this post"));
+				return BadRequest(new Response(false, "You don't own this food"));
 			}
 
 			await _foodService.DeleteFoodAsync(id);
