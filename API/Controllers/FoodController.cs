@@ -146,6 +146,7 @@ namespace API.Controllers
 		[SwaggerOperation(Summary = "Deletes specific food")]
 		[Authorize(Roles = UserRoles.AdminOrUser)]
 		[HttpDelete("{id}")]
+		//s
 		public async Task<IActionResult> Delete(int id)
 		{
 			var userOwnsFood = await _foodService.UserOwnsFoodAsync(id, User.FindFirstValue(ClaimTypes.NameIdentifier));
