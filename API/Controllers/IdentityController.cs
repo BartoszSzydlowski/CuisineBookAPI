@@ -99,8 +99,10 @@ namespace API.Controllers
 
 				var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
 
+				var expDate = DateTime.Now.AddHours(2);
+
 				var token = new JwtSecurityToken(
-					expires: DateTime.Now.AddHours(2),
+					expires: expDate,
 					claims: authClaims,
 					signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
 					);
@@ -108,7 +110,7 @@ namespace API.Controllers
 				response =  Ok(new
 				{
 					token = new JwtSecurityTokenHandler().WriteToken(token),
-					expiration = token.ValidTo
+					expiration = expDate
 				});
 			}
 

@@ -18,3 +18,23 @@ C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\Infras
 C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
 C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
 C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\obj\Debug\net5.0\Infrastructure.genruntimeconfig.cache
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.json
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.dev.json
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\bin\Debug\net5.0\Application.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\bin\Debug\net5.0\Domain.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\bin\Debug\net5.0\Application.pdb
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\bin\Debug\net5.0\Domain.pdb
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\obj\Debug\net5.0\Infrastructure.csprojAssemblyReference.cache
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Infrastructure\obj\Debug\net5.0\Infrastructure.genruntimeconfig.cache

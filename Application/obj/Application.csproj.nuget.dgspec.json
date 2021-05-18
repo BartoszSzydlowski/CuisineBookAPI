@@ -1,25 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Application\\Application.csproj": {}
+    "D:\\przed formatem\\Studia\\pz2\\PZ2-2021-team3\\CuisineBookAPI\\Application\\Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Application\\Application.csproj": {
+    "D:\\przed formatem\\Studia\\pz2\\PZ2-2021-team3\\CuisineBookAPI\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\przed formatem\\Studia\\pz2\\PZ2-2021-team3\\CuisineBookAPI\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\BARTEK\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Application\\obj\\",
+        "projectPath": "D:\\przed formatem\\Studia\\pz2\\PZ2-2021-team3\\CuisineBookAPI\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\Bartek\\.nuget\\packages\\",
+        "outputPath": "D:\\przed formatem\\Studia\\pz2\\PZ2-2021-team3\\CuisineBookAPI\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\BARTEK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bartek\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -28,15 +27,14 @@
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\Domain.csproj"
+              "D:\\przed formatem\\Studia\\pz2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\przed formatem\\Studia\\pz2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\Domain.csproj"
               }
             }
           }
@@ -95,22 +93,21 @@
         }
       }
     },
-    "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\Domain.csproj": {
+    "D:\\przed formatem\\Studia\\pz2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\przed formatem\\Studia\\pz2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\BARTEK\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\BARTEK\\Desktop\\projekt zespolowy 2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\obj\\",
+        "projectPath": "D:\\przed formatem\\Studia\\pz2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\Bartek\\.nuget\\packages\\",
+        "outputPath": "D:\\przed formatem\\Studia\\pz2\\PZ2-2021-team3\\CuisineBookAPI\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\BARTEK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bartek\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -119,7 +116,6 @@
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

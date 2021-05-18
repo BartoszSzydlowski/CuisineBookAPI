@@ -13,3 +13,18 @@ C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\Applic
 C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\Application\obj\Debug\net5.0\Application.dll
 C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\Application\obj\Debug\net5.0\ref\Application.dll
 C:\Users\BARTEK\Desktop\projekt zespolowy 2\PZ2-2021-team3\CuisineBookAPI\Application\obj\Debug\net5.0\Application.pdb
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\bin\Debug\net5.0\Application.deps.json
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\bin\Debug\net5.0\Application.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\bin\Debug\net5.0\ref\Application.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\bin\Debug\net5.0\Application.pdb
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\bin\Debug\net5.0\Domain.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\bin\Debug\net5.0\Domain.pdb
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\obj\Debug\net5.0\Application.csprojAssemblyReference.cache
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\obj\Debug\net5.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\obj\Debug\net5.0\Application.AssemblyInfoInputs.cache
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\obj\Debug\net5.0\Application.AssemblyInfo.cs
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\obj\Debug\net5.0\Application.csproj.CoreCompileInputs.cache
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\obj\Debug\net5.0\Application.csproj.CopyComplete
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\obj\Debug\net5.0\Application.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\obj\Debug\net5.0\ref\Application.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Application\obj\Debug\net5.0\Application.pdb

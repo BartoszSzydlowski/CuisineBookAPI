@@ -73,7 +73,11 @@ namespace API
 			services.AddSwaggerGen(c =>
 			{
 				c.EnableAnnotations();
-				c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+				c.SwaggerDoc("v1", new OpenApiInfo
+				{
+					Title = "API",
+					Version = "v1",
+				});
 
 				var securityScheme = new OpenApiSecurityScheme
 				{
