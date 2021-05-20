@@ -10,7 +10,9 @@ namespace Application.Interfaces
 
 		Task<IEnumerable<FoodDto>> GetAllFoodWithStatusAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted);
 
-		Task<IEnumerable<FoodDto>> SearchAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted, string searchPhrase);
+		//Task<IEnumerable<FoodDto>> SearchAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted, string searchPhrase);
+
+		Task<IEnumerable<FoodDto>> GetFoodByCathegoryAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted, string cathegory);
 
 		Task<int> GetAllFoodCountAsync(string filterBy);
 

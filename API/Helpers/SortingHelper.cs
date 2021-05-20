@@ -8,7 +8,7 @@ namespace API.Helpers
 		{
 			return new[]
 			{
-				SortFields.Title, SortFields.CreationDate
+				SortFields.Title, SortFields.CreationDate, SortFields.Cathegory
 			};
 		}
 	}
@@ -17,5 +17,6 @@ namespace API.Helpers
 	{
 		public static KeyValuePair<string, string> Title { get; set; } = new KeyValuePair<string, string>("title", "Title");
 		public static KeyValuePair<string, string> CreationDate { get; set; } = new KeyValuePair<string, string>("creationdate", "Created");
+		public static KeyValuePair<string, string> Cathegory { get; set; } = new KeyValuePair<string, string>("cathegory", "Cathegory");
 	}
 }

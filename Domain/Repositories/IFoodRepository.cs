@@ -12,7 +12,9 @@ namespace Domain.Repositories
 
 		Task<Food> GetByIdAsync(int id);
 
-		Task<IEnumerable<Food>> SearchAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted, string searchPhrase);
+		//Task<IEnumerable<Food>> SearchAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted, string searchPhrase);
+
+		Task<IEnumerable<Food>> GetByCathegoryAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted, string cathegory);
 
 		Task<int> GetAllCountAsync(string filterBy);
 

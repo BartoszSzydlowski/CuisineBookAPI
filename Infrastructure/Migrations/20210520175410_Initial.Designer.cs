@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20210518204054_Initial")]
+    [Migration("20210520175410_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -88,33 +88,33 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bae1109e-5a14-4953-89f7-833dc4c3aba5",
+                            Id = "ae57cdb8-f624-405d-83f8-f4a71be80662",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6f9bc613-f206-4738-86e3-d5e6dae3dcfa",
+                            ConcurrencyStamp = "99396ed7-fac7-4889-8312-60928aeb2816",
                             Email = "testUser@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TESTUSER@TEST.COM",
                             NormalizedUserName = "TESTUSER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEewjLXBLhsKIduS9vRhXMBqkKiXRd+MAe3ezJsEXBwP8r4ADNz4iBYjoIgQLFpkeQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEL/r2DGBEcEQcY0bMC80mFQbS/u5P6C07uE9Re33gk8o+9SVYt2KsrSW6zbqSWpZ/w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3f869d23-4897-447e-8446-dcfedae212f3",
+                            SecurityStamp = "41f5f1c6-b81f-4c80-a6ac-d20766decc67",
                             TwoFactorEnabled = false,
                             UserName = "testUser"
                         },
                         new
                         {
-                            Id = "25d8fa66-5526-4625-8cbc-d4561301905e",
+                            Id = "f0c9397d-fa74-4ab7-b073-8e93b7d6be8e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "39c95df2-faa2-42fe-9c34-4ab21d897161",
+                            ConcurrencyStamp = "aa4a9b14-fb07-48af-a830-7d4569632474",
                             Email = "testAdmin@test.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "TESTADMIN@TEST.COM",
                             NormalizedUserName = "TESTADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAENR58yQRc2zeGr2zK5evUAN0W3KURE4kKuw4vF8MVAyBK6Z1kihefY6Y7Aha1wy4kA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEL/CM00UGgKvnO7bV7GTAk/O5Rqd2nkRVSXMGOrepYAXIPRYikYcSLz0XjPS+lLrIA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "92d5c787-20f8-4fbd-9de8-dc29aadfc9a3",
+                            SecurityStamp = "32478c60-1b32-4d7d-a821-596abbd3129c",
                             TwoFactorEnabled = false,
                             UserName = "testAdmin"
                         });
@@ -212,15 +212,15 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fae149de-d339-4910-ab24-e246f6fdf61c",
-                            ConcurrencyStamp = "812e741c-fdac-4f68-a59f-c1e6dbb87b2d",
+                            Id = "bc71d516-3c6b-4eb6-8d6d-e931cc9d0140",
+                            ConcurrencyStamp = "f17477d5-71b6-451b-a2ff-bfaddc944288",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "37891051-6400-4e6d-ab1c-c29a8c15348c",
-                            ConcurrencyStamp = "cccc727e-5ec4-4c75-9865-e171985a30d2",
+                            Id = "70499174-46f8-490c-9954-83179e4aa280",
+                            ConcurrencyStamp = "13af1491-1e76-45dc-89d4-6d3049c8fcbc",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -313,13 +313,13 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "bae1109e-5a14-4953-89f7-833dc4c3aba5",
-                            RoleId = "37891051-6400-4e6d-ab1c-c29a8c15348c"
+                            UserId = "ae57cdb8-f624-405d-83f8-f4a71be80662",
+                            RoleId = "70499174-46f8-490c-9954-83179e4aa280"
                         },
                         new
                         {
-                            UserId = "25d8fa66-5526-4625-8cbc-d4561301905e",
-                            RoleId = "fae149de-d339-4910-ab24-e246f6fdf61c"
+                            UserId = "f0c9397d-fa74-4ab7-b073-8e93b7d6be8e",
+                            RoleId = "bc71d516-3c6b-4eb6-8d6d-e931cc9d0140"
                         });
                 });
 

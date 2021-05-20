@@ -31,9 +31,15 @@ namespace Application.Services
 			return _mapper.Map<IEnumerable<FoodDto>>(food);
 		}
 
-		public async Task<IEnumerable<FoodDto>> SearchAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted, string searchPhrase)
+		//public async Task<IEnumerable<FoodDto>> SearchAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted, string searchPhrase)
+		//{
+		//	var food = await _foodRepository.SearchAsync(pageNumber, pageSize, sortField, ascending, filterBy, isAccepted, searchPhrase);
+		//	return _mapper.Map<IEnumerable<FoodDto>>(food);
+		//}
+
+		public async Task<IEnumerable<FoodDto>> GetFoodByCathegoryAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted, string cathegory)
 		{
-			var food = await _foodRepository.SearchAsync(pageNumber, pageSize, sortField, ascending, filterBy, isAccepted, searchPhrase);
+			var food = await _foodRepository.GetByCathegoryAsync(pageNumber, pageSize, sortField, ascending, filterBy, isAccepted, cathegory);
 			return _mapper.Map<IEnumerable<FoodDto>>(food);
 		}
 

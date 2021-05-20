@@ -83,21 +83,42 @@ namespace API.Controllers
 			return Ok(new Response<FoodDto>(food));
 		}
 
-		[SwaggerOperation(Summary = "Search with phrase")]
+		//[SwaggerOperation(Summary = "Search with phrase")]
+		//[AllowAnonymous]
+		//[HttpGet("search")]
+		//public async Task<IActionResult> Search([FromQuery] PaginationFilter paginationFilter,
+		//   [FromQuery] SortingFilter sortingFilter,
+		//   [FromQuery] string filterBy = "",
+		//   [FromQuery] bool isAccepted = true,
+		//   [FromQuery] string searchPhrase = "")
+		//{
+		//	var validPaginationFilter = new PaginationFilter(paginationFilter.PageNumber, paginationFilter.PageSize);
+		//	var validSortingFilter = new SortingFilter(sortingFilter.SortField, sortingFilter.Ascending);
+
+		//	var food = await _foodService.SearchAsync(validPaginationFilter.PageNumber, validPaginationFilter.PageSize,
+		//													validSortingFilter.SortField, validSortingFilter.Ascending,
+		//													filterBy, isAccepted, searchPhrase);
+
+		//	var totalRecords = await _foodService.GetAllFoodCountAsync(filterBy);
+		//	return Ok(PaginationHelper.CreatePagedResponse(food, validPaginationFilter, totalRecords));
+		//}
+
+		[SwaggerOperation(Summary = "Get by cathegory")]
 		[AllowAnonymous]
-		[HttpGet("{search}")]
-		public async Task<IActionResult> Search([FromQuery] PaginationFilter paginationFilter,
+		[HttpGet("cathegory")]
+		public async Task<IActionResult> GetByCathegory([FromQuery] PaginationFilter paginationFilter,
 		   [FromQuery] SortingFilter sortingFilter,
 		   [FromQuery] string filterBy = "",
-		   [FromQuery] bool isAccepted = true,
-		   [FromQuery] string searchPhrase = "")
+		   [FromQuery] bool isAccepted = false,
+		   [FromQuery] string cathegory = ""
+			)
 		{
 			var validPaginationFilter = new PaginationFilter(paginationFilter.PageNumber, paginationFilter.PageSize);
 			var validSortingFilter = new SortingFilter(sortingFilter.SortField, sortingFilter.Ascending);
 
-			var food = await _foodService.SearchAsync(validPaginationFilter.PageNumber, validPaginationFilter.PageSize,
+			var food = await _foodService.GetFoodByCathegoryAsync(validPaginationFilter.PageNumber, validPaginationFilter.PageSize,
 															validSortingFilter.SortField, validSortingFilter.Ascending,
-															filterBy, isAccepted, searchPhrase);
+															filterBy, isAccepted, cathegory);
 
 			var totalRecords = await _foodService.GetAllFoodCountAsync(filterBy);
 			return Ok(PaginationHelper.CreatePagedResponse(food, validPaginationFilter, totalRecords));

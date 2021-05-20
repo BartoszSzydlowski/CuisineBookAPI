@@ -37,17 +37,33 @@ namespace Infrastructure.Repositories
 				   .ToListAsync();
 		}
 
-		public async Task<IEnumerable<Food>> SearchAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted, string searchPhrase)
+		//public async Task<IEnumerable<Food>> SearchAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted, string searchPhrase)
+		//{
+		//	IQueryable<Food> items = _context.Food
+		//		   .Where(m => m.Title.ToLower().Contains(filterBy.ToLower()) && m.IsAccepted == isAccepted)
+		//		   .OrderByPropertyName(sortField, ascending)
+		//		   .Skip((pageNumber - 1) * pageSize)
+		//		   .Take(pageSize);
+
+		//	if (!string.IsNullOrEmpty(searchPhrase) || !string.IsNullOrWhiteSpace(searchPhrase))
+		//	{
+		//		items = items.Where(e => e.Title.Contains(searchPhrase));
+		//	}
+
+		//	return await items.ToListAsync();
+		//}
+
+		public async Task<IEnumerable<Food>> GetByCathegoryAsync(int pageNumber, int pageSize, string sortField, bool ascending, string filterBy, bool isAccepted, string cathegory)
 		{
 			IQueryable<Food> items = _context.Food
-				   .Where(m => m.Title.ToLower().Contains(filterBy.ToLower()) && m.IsAccepted == isAccepted)
+				   .Where(m => m.Cathegory.ToLower().Contains(filterBy.ToLower()) && m.IsAccepted == isAccepted)
 				   .OrderByPropertyName(sortField, ascending)
 				   .Skip((pageNumber - 1) * pageSize)
 				   .Take(pageSize);
 
-			if (!string.IsNullOrEmpty(searchPhrase) || !string.IsNullOrWhiteSpace(searchPhrase))
+			if (!string.IsNullOrEmpty(cathegory) || !string.IsNullOrWhiteSpace(cathegory))
 			{
-				items = items.Where(e => e.Title.Contains(searchPhrase));
+				items = items.Where(e => e.Cathegory.Contains(cathegory));
 			}
 
 			return await items.ToListAsync();
