@@ -1,0 +1,12 @@
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Domain\bin\Release\net5.0\Domain.deps.json
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Domain\bin\Release\net5.0\Domain.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Domain\bin\Release\net5.0\ref\Domain.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Domain\bin\Release\net5.0\Domain.pdb
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Domain\obj\Release\net5.0\Domain.csprojAssemblyReference.cache
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Domain\obj\Release\net5.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Domain\obj\Release\net5.0\Domain.AssemblyInfoInputs.cache
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Domain\obj\Release\net5.0\Domain.AssemblyInfo.cs
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Domain\obj\Release\net5.0\Domain.csproj.CoreCompileInputs.cache
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Domain\obj\Release\net5.0\Domain.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Domain\obj\Release\net5.0\ref\Domain.dll
+D:\przed formatem\Studia\pz2\PZ2-2021-team3\CuisineBookAPI\Domain\obj\Release\net5.0\Domain.pdb
